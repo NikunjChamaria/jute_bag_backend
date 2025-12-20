@@ -4,24 +4,10 @@ require("dotenv").config();
 
 const app = express();
 
-const allowedOrigins = [
-  "http://localhost:8080",
-  "https://jute-bag-frontend.onrender.com"
-];
-
 app.use(cors({
-  origin: function (origin, callback) {
-    // allow requests with no origin (Postman, server-to-server)
-    if (!origin) return callback(null, true);
-
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true
+  origin: "*"
 }));
+
 
 app.use(express.json());
 
